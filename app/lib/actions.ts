@@ -38,7 +38,6 @@ export async function createInvoice(prevState: State, formData: FormData) {
         status: formData.get('status'),
     });
 
-    console.log(validatedFields)
 
       // If form validation fails, return errors early. Otherwise, continue.
     if (!validatedFields.success) {
@@ -64,6 +63,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
       };
     }
 
+    // Revalidate the cache for the invoices page and redirect the user.
     revalidatePath('/dashboard/invoices');
     redirect('/dashboard/invoices');
 }
